@@ -1,0 +1,74 @@
+[
+  {
+    "model": "mainapp.product",
+    "pk": 1,
+    "fields": {
+      "name": "\"Худи черного цвета с монограммами adidas Originals\"",
+      "image": "",
+      "description": "\"Мягкая ткань для свитшотов. Стиль и комфорт – это образ жизни.\"",
+      "price": "6090.00",
+      "qyantity": 12,
+      "category": 3
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 2,
+    "fields": {
+      "name": "\"Синяя куртка The North Face\"",
+      "image": "",
+      "description": "Гладкая ткань. Водонепроницаемое покрытие. Легкий и теплый пуховый наполнитель.",
+      "price": "23725.00",
+      "qyantity": 9,
+      "category": 3
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 3,
+    "fields": {
+      "name": "\"Коричневый спортивный oversized-топ ASOS DESIGN\"",
+      "image": "",
+      "description": "\"Материал с плюшевой текстурой. Удобный и мягкий.\"",
+      "price": "3390.00",
+      "qyantity": 6,
+      "category": 3
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 4,
+    "fields": {
+      "name": "\"Черный рюкзак Nike Heritage\"",
+      "image": "",
+      "description": "Плотная ткань. Легкий материал.",
+      "price": "2340.00",
+      "qyantity": 9,
+      "category": 2
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 5,
+    "fields": {
+      "name": "\"Черные туфли на платформе с 3 парами люверсов Dr Martens 1461 Bex\"",
+      "image": "",
+      "description": "\"Гладкий кожаный верх. Натуральный материал.\"",
+      "price": "13590.00",
+      "qyantity": 7,
+      "category": 6
+    }
+  },
+  {
+    "model": "mainapp.product",
+    "pk": 6,
+    "fields": {
+      "name": "\"Темно-синие широкие строгие брюки ASOS DESIGN\"",
+      "image": "",
+      "description": "\"Легкая эластичная ткань сирсакер Фактурная ткань.\"",
+      "price": "2890.00",
+      "qyantity": 4,
+      "category": 3
+    }
+  }
+]
