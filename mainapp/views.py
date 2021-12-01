@@ -3,7 +3,7 @@ from django.shortcuts import render
 # import json
 import os
 
-from mainapp.models import Product, ProductCategory
+from mainapp.models import Product,ProductCategory
 
 MODULE_DIR = os.path.dirname(__file__)
 
