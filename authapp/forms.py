@@ -29,7 +29,7 @@ class UserRegisterForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(UserRegisterForm, self).__init__(*args, **kwargs)
         self.fields['username'].widget.attrs['placeholder'] = 'Ведите имя пользователя'
-        self.fields['emile'].widget.attrs['placeholder'] = 'Ведите  адрес эл.почты'
+        self.fields['email'].widget.attrs['placeholder'] = 'Ведите  адрес эл.почты'
         self.fields['first_name'].widget.attrs['placeholder'] = 'Ведите имя'
         self.fields['last_name'].widget.attrs['placeholder'] = 'Ведите фамилию'
         self.fields['password1'].widget.attrs['placeholder'] = 'Ведите пароль'
