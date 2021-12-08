@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 import json
 import os
-
+from django.views.generic import DetailView
 from mainapp.models import Product,ProductCategory
 
 MODULE_DIR = os.path.dirname(__file__)
@@ -25,30 +25,18 @@ def products(request):
     context['categories'] = ProductCategory.objects.all()
     return render(request, 'mainapp/products.html', context)
 
+class ProductDetali(DetalView):  #контролер вывода информации о продукте
 
+    model = Product
+    template_name = 'mainapp/detail.html'
 
+    # context_object_name = 'product'
 
+    def get_context_data(self, **kwargs):
+        # Добваляем список категорий для вывода сайдбара с категориями на странице каталога
 
+        context = super(ProductDetali, self).get_context_data(**kwargs)
+        product = self.get_object()
+        context['product'] = product
+        return context
 
-# def test(request):
-#     context = {
-#         'title': 'geekshop',
-#         'header': 'Добро пожаловать на сайт',
-#         'user': 'Николай',
-#         'products': [
-#             {'name': 'Худи черного цвета с монограммами adidas Originals', 'price': 6091},
-#             {'name': 'Синяя куртка The North Face', 'price': 23726},
-#             {'name': 'Коричневый спортивный oversized-топ ASOS DESIGN', 'price': 3391},
-#             {'name': 'Черный рюкзак Nike Heritage', 'price': 2341},
-#             {'name': 'Черные туфли на платформе с 4 парами люверсов Dr Martens 1461 Bex', 'price': 13590},
-#             {'name': 'Темно-синие широкие строгие брюки ASOS DESIGN', 'price': 2891},
-#         ],
-#
-#         'products_promo': [
-#             {'name': 'Худи черного цвета с монограммами adidas Originals', 'price': 5001},
-#             {'name': 'Коричневый спортивный oversized-топ ASOS DESIGN', 'price': 2001},
-#             {'name': 'Черный рюкзак Nike Heritage', 'price': 1001},
-#
-#         ]
-#     }
-#     return render(request, 'test_content.html', context)
