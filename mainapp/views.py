@@ -25,7 +25,7 @@ def products(request):
     context['categories'] = ProductCategory.objects.all()
     return render(request, 'mainapp/products.html', context)
 
-class ProductDetali(DetalView):  #контролер вывода информации о продукте
+class ProductDetail(DetailView):  #контролер вывода информации о продукте
 
     model = Product
     template_name = 'mainapp/detail.html'
