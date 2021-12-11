@@ -14,7 +14,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:path('blog/', include('blog.urls'))
 
 """
-
 from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
@@ -28,7 +27,7 @@ urlpatterns = [
     path('products/', include('mainapp.urls',namespace='mainapp')),
     path('users/', include('authapp.urls',namespace='authapp')),
     path('baskets/', include('baskets.urls', namespace='baskets')),
-
+    path('admins/', include('admins.urls', namespace='admins')),
     #path('products/', products, name='products'),
 
 ]
