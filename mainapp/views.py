@@ -3,7 +3,7 @@ from django.shortcuts import render
 import json
 import os
 from django.views.generic import DetailView
-from mainapp.models import Product,ProductCategory
+from mainapp.models import Product, ProductCategory
 
 MODULE_DIR = os.path.dirname(__file__)
 
@@ -34,7 +34,6 @@ class ProductDetail(DetailView):  #контролер вывода информ�
 
     def get_context_data(self, **kwargs):
         # Добваляем список категорий для вывода сайдбара с категориями на странице каталога
-
         context = super(ProductDetali, self).get_context_data(**kwargs)
         product = self.get_object()
         context['product'] = product
