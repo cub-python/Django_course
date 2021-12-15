@@ -60,7 +60,7 @@
 
                         <li class="page-item {% if not products.has_previous %} disabled{% endif %}">
                             <a class="page-link"
-                               href="{% if product.has_previous %} {% url 'mainapp:page' products.previous _page_number %} {% endif %}"
+                               href="{% if products.has_previous %} {% url 'mainapp:page' products.previous_page_number %} {% endif %}"
                                tabindex="-1" aria-disabled="true">Previous</a>
                         </li>
 
@@ -73,10 +73,10 @@
                         {% endfor %}
 
 
-                        <li class="page-item" {% if not products.has_next %} disabled {% endif %}">
-                        <a class="'page-link>
-                             href=" {% products.has_next %} {%url 'mainapp:page' products.next_page_number %} {% endif %}">Next</a>
-
+                          <li class="page-item {% if not products.has_next %} disabled {% endif %}">
+                            <a class="page-link"
+                               href="{% if products.has_next %} {% url 'mainapp:page' products.next_page_number %} {% endif %}"
+                               tabindex="-1" aria-disabled="true">Next</a>
                         </li>
 
 
