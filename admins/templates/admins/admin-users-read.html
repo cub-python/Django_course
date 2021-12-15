@@ -1,4 +1,4 @@
-{% extends 'admions/base.html' %}
+{% extends 'admins/base.html' %}
 
 {% block content %}
     <div id="layoutSidenav_content">
@@ -23,39 +23,41 @@
                                     <th>Активный</th>
                                 </tr>
                                 </thead>
-                                <tfoot>
-                                <tr>
-                                    <th>Имя пользователя</th>
-                                    <th>Имя</th>
-                                    <th>Фамилия</th>
-                                    <th>Адрес эл. почты</th>
-                                    <th>Персонал сайта</th>
-                                    <th>Активный</th>
-                                </tr>
-                                </tfoot>
+
                                 <tbody>
-                                <tr>
-                                    <td><a href="#" style="color: dodgerblue">test</a></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="text-center"><i class="fas fa-check-circle"></i></td>
-                                    <td class="text-center"><i class="fas fa-check-circle"></i></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="admin-users-update-delete.html" style="color: dodgerblue">nikolay</a></td>
-                                    <td>Nikolay</td>
-                                    <td>Nagornyy</td>
-                                    <td>isp06.ru</td>
-                                    <td class="text-center"><i class="fas fa-times-circle"></i></td>
-                                    <td class="text-center"><i class="fas fa-times-circle"></i></td>
-                                </tr>
+                                {% for user in object_list %}
+                                    <tr>
+                                        <td><a href="{% url 'admins:admin_users_update' user.id %}"
+                                               style="color: dodgerblue">{{ user.username }}</a></td>
+                                        <td>{{ user.first_name }}</td>
+                                        <td>{{ user.last_name }}</td>
+                                        <td>{{ user.email }}</td>
+                                        <td class="text-center">
+                                            {% if user.is_staff %}
+                                                <i class="fas fa-check-circle"></i>
+                                            {% else %}
+                                                <i class="fas fa-times-circle"></i>
+                                            {% endif %}
+
+                                        </td>
+
+
+                                        <td class="text-center">
+
+                                            {% if user.is_active %}
+                                                <i class="fas fa-check-circle"></i>
+                                            {% else %}
+                                                <i class="fas fa-times-circle"></i>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="admin-users-create.html">
+                        <a href="{% url 'admins:admin_users_create' %}">
                             <button class="btn btn-success">Создать пользователя</button>
                         </a>
                     </div>
@@ -70,4 +72,4 @@
             </div>
         </footer>
     </div>
-{% endblock %}
+{% endblock %}ndblock %}
