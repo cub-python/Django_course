@@ -70,3 +70,17 @@ class UserProfilerForm(UserChangeForm):
         for field_name , field in self.fields.items():
             field.widget.attrs['class'] = 'form-control py-4'
         self.fields['image'].widget.attrs['class'] = 'custom-file-input'
+
+
+class UserProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        exclude = ('user',)
+
+    def __init__(self,*args,**kwargs):
+        super(UserProfileEditForm,self)._init__(*args,**kwargs)
+        for field_name field in self.fields.items():
+            if field_name != 'gender':
+                field.widjet.attrs['class'] = 'form-control py-4'
+            else:
+                field.widjet.attrs['class'] = 'form-control
