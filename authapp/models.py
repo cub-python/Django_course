@@ -1,4 +1,5 @@
 from datetime import timedelta
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -26,19 +27,21 @@ class UserProfile(models.Model):
     FEMALE = 'W'
 
     GENDER_CHOICES = (
-        (MALE, 'M'),
+        (MALE, 'М'),
         (FEMALE, 'Ж'),
     )
 
     user = models.OneToOneField(User, unique=True, null=False, db_index=True, on_delete=models.CASCADE)
     about = models.TextField(verbose_name='о себе', blank=True, null=True)
     gender = models.CharField(verbose_name='пол', choices=GENDER_CHOICES, blank=True, max_length=2)
+    lahgs = models.CharField(verbose_name='язык',blank=True,max_length=10,default='RU')
+
 
     @receiver(post_save, sender=User)
-    def create_user_profile(selfsender, instonce, created, **kwargs):
+    def create_user_profile(sender, instance, created, **kwargs):
         if created:
-            UserProfile.objects.create(user=instonce)
+            UserProfile.objects.create(user=instance)
 
     @receiver(post_save, sender=User)
-    def save_user_profile(sender, instonce, **kwargs):
-        instonce.userprofile.save()
+    def save_user_profile(sender, instance, **kwargs):
+        instance.userprofile.save()
