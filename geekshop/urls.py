@@ -35,10 +35,7 @@ urlpatterns = [
 
     path('i18n/', include('django.conf.urls.i18n')),
 
-    path('', include('social_django.urls',namespace='social')),
-
-
-
+    path('', include('social_django.urls', namespace='social')),
 
 ]
 
