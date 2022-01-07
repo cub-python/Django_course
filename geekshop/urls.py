@@ -1,5 +1,4 @@
 """geekshop URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
 Examples:
@@ -11,8 +10,7 @@ Class-based views
     2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:path('blog/', include('blog.urls'))
-
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf.urls import url
 from django.contrib import admin
@@ -30,11 +28,15 @@ urlpatterns = [
     path('users/', include('authapp.urls', namespace='authapp')),
     path('baskets/', include('baskets.urls', namespace='baskets')),
     path('admins/', include('admins.urls', namespace='admins')),
-    # path('products/', products, name='products'),
+
+    # path('language_new/', include('django.conf.urls',namespace='language_new')),
+    # path('lang/', set_language, name='language'),
+    # path(r'^i18n/', include('django.conf.urls.i18n')),
 
     path('i18n/', include('django.conf.urls.i18n')),
 
-    path('', include('social_django.urls', namespace='social')),
+    path('', include('social_django.urls',namespace='social')),
+
 
 
 
