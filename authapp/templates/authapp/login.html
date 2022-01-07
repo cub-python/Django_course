@@ -35,15 +35,15 @@
                         <label class="small mb-1" for="{{ form.password.id_for_label }}">Пароль</label>
                         {{ form.password }}
                     </div>
-<!--                    {#                    {{ form.as_p }}#}-->
+                    {#                    {{ form.as_p }}#}
                     <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                         <a class="small" href="#">Забыли пароль?</a>
                         <input class="btn btn-primary" type="submit" value="Авторизоваться">
                     </div>
                 </form>
                 <div class="list-group-horizontal card-footer text-center small">
-                        <a href="{% url 'social:begin' 'vk-oauth2' %}?next='/'">
-                            <i class="fab fa-vk"></i>
+                    <a href="{% url 'social:begin' 'vk-oauth2' %}?next='/'">
+                        <i class="fab fa-vk"></i>
                     </a>
                 </div>
             </div>
@@ -53,4 +53,4 @@
             </div>
         </div>
     </div>
-{% endblock %}
+{% endblock %}k %}
