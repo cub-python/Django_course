@@ -18,7 +18,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-3!qm%#5%$5g0-(%vu4%j@^x9(nvvh5h*wm^kngwb7dyq&qx4*c'
 from dotenv import load_dotenv
-
 load_dotenv(BASE_DIR / '.env')
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -40,7 +39,7 @@ INSTALLED_APPS = [
     'baskets',
     'admins',
     'social_django',
-
+    'ordersapp',
 ]
 
 MIDDLEWARE = [
@@ -166,7 +165,7 @@ LOGIN_ERROR_URL = '/'
 # EMAIL_HOST_USER ,EMAIL_HOST_PASSWORD = None,None
 # python -m smtpd -n -c DebuggingServer localhost:25
 
-
+# Здесь дана настройка секретных ключей для ВКонтакте
 SOCIAL_AUTH_VK_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_VK_OAUTH2_KEY')
 SOCIAL_AUTH_VK_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_VK_OAUTH2_SECRET')
 SOCIAL_AUTH_VK_OAUTH2_API_VERSION = '5.131'
@@ -174,8 +173,8 @@ SOCIAL_AUTH_VK_OAUTH2_IGNORE_DEFAULT_SCOPE = True
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
 
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'social_core.backends.vk.VKOAuth2',
+    'django.contrib.auth.backends.ModelBackend', # бекенд классической аутентификации, чтобы работала авторизац через обычный логин и пароль
+    'social_core.backends.vk.VKOAuth2',          # бекенд авторизации через ВКонтакте
 )
 
 # id = '8044921'
