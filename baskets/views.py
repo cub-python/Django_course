@@ -21,6 +21,7 @@ from mainapp.models import Product
 #         Basket.objects.create(user=user_select,product=product,quantity=1)
 #     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+
 @login_required
 def basket_add(request,id):
     if request.is_ajax():

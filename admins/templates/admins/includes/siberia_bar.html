@@ -1,5 +1,6 @@
 
-  <div id="layoutSidenav_nav">
+{% load i18n %}
+<div id="layoutSidenav_nav">
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
@@ -8,19 +9,19 @@
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-users"></i>
                         </div>
-                        Пользователи
+                        {% translate 'Users' %}
                     </a>
-                    <a class="nav-link" href="{% url 'admins:admin_category' %}>
+                    <a class="nav-link" href="{% url 'admins:admin_category' %}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-shopping-basket"></i>
                         </div>
-                        Категории
+                        {% translate 'Categories' %}
                     </a>
-                    <a class="nav-link" href="{% url 'admins:admin_product' %}">
+                    <a class="nav-link" href="{% url 'admins:admins_product' %}">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-tshirt"></i>
                         </div>
-                        Продукты
+                        {% translate 'Products' %}
                     </a>
                 </div>
             </div>
