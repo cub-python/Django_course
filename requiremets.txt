@@ -18,6 +18,8 @@ distro==1.4.0
 distro-info===0.23ubuntu1
 Django==3.2.9
 django-braces==1.15.0
+django-cors-headers==3.10.1
+django-filter==21.1
 django-oauth-toolkit==1.6.1
 django-rest-framework-social-oauth2==1.1.0
 djangorestframework==3.13.1
@@ -84,3 +86,4 @@ usb-creator==0.3.7
 wadllib==1.3.3
 wrapt==1.13.3
 xkit==0.0.0
+
