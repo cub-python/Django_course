@@ -19,6 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.i18n import set_language
 
+import debug_toolbar
+
 from mainapp.views import index, products
 
 urlpatterns = [
@@ -31,6 +33,7 @@ urlpatterns = [
     path('orders/', include('ordersapp.urls', namespace='orders')),
 
     # path('language_new/', include('django.conf.urls',namespace='language_new')),
+
     # path('lang/', set_language, name='language'),
     # path(r'^i18n/', include('django.conf.urls.i18n')),
     path('i18n/', include('django.conf.urls.i18n')),
@@ -42,4 +45,6 @@ urlpatterns = [
 
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += [path('debug/', include(debug_toolbar.urls))]
