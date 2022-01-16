@@ -1,7 +1,7 @@
 import json
 
 from django.core.management.base import BaseCommand
-from mainapp.models import ProductCategory,Product
+from mainapp.models import ProductCategory, Product
 
 
 def load_from_json(file_name):
