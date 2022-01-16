@@ -5,6 +5,7 @@ from django.db import models
 from mainapp.models import Product
 
 
+
 class Order(models.Model):
     FORMING = 'FM'
     SEND_TO_PROCEED = 'STP'

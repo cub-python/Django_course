@@ -26,5 +26,4 @@
         {% endfor %}
     </div>
     {% include 'ordersapp/includes/inc_order_actions.html' %}
-
 {% endblock %}

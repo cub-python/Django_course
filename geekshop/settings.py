@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 #     'template_profiler_panel'
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

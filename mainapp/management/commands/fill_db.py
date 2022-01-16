@@ -22,6 +22,7 @@ class Command(BaseCommand):
 
         products = load_from_json('mainapp/fixtures/products.json')
 
+
         Product.objects.all().delete()
         for product in products:
             prod = product.get('fields')
