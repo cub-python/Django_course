@@ -23,7 +23,6 @@ from django.views.i18n import set_language
 
 from mainapp.views import index, products
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
