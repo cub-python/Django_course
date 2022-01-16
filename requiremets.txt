@@ -50,8 +50,10 @@ paramiko==2.6.0
 pexpect==4.6.0
 Pillow==7.0.0
 pip-licenses==3.3.1
+postgres==4.0
 protobuf==3.6.1
 psycopg2-binary==2.9.3
+psycopg2-pool==1.1
 PTable==0.9.2
 pycairo==1.16.2
 pycups==1.9.73
