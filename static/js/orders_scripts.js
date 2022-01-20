@@ -107,7 +107,8 @@ window.onload = function () {
 
 }
 
- $('.order_form select').change(function () {
+// $('.order_form select').change(function () {
+    $(document).on('change', 'order_form select', function() {
 
         let target = event.target;
         orderitem_num = parseInt(target.name.replace('orderitems-', '').replace('-product', ''));
