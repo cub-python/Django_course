@@ -127,6 +127,7 @@ def get_product_price(request,pk):
         return JsonResponse({'price':0})
 
 
+
 @receiver(pre_save, sender=Basket)
 @receiver(pre_save, sender=OrderItem)
 def product_quantity_update_save(sender, instance, **kwargs):
