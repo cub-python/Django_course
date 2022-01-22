@@ -58,7 +58,7 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
-ROOT_URLCONF = 'geekshop.urls'
+ROOT_URLCONF = 'django_course.urls'
 
 TEMPLATES = [
     {
@@ -98,7 +98,7 @@ WSGI_APPLICATION = 'geekshop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'geekshop',
+        'NAME': 'django_course',
         'USER': 'postgres',
     }
 }
