@@ -63,8 +63,7 @@ ROOT_URLCONF = 'django_course.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,7 +82,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'geekshop.wsgi.application'
+WSGI_APPLICATION = 'django_course.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
