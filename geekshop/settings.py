@@ -18,6 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-3!qm%#5%$5g0-(%vu4%j@^x9(nvvh5h*wm^kngwb7dyq&qx4*c'
 from dotenv import load_dotenv
+
 load_dotenv(BASE_DIR / '.env')
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -41,7 +42,7 @@ INSTALLED_APPS = [
     'social_django',
     'ordersapp',
     'debug_toolbar',
-    'template_profiler_panel'
+    'template_profiler_panel',
 ]
 
 MIDDLEWARE = [
@@ -87,20 +88,20 @@ WSGI_APPLICATION = 'geekshop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3_old',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'geekshop',
-        'USER': 'postgres',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3_old',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'geekshop',
+#         'USER': 'postgres',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -125,14 +126,14 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru'
 
-ugettext = lambda s: s
+gettext = lambda s: s
 
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale/'),
 )
 LANGUAGES = (
-    ('en', ugettext('English')),
-    ('ru', ugettext('Russia')),
+    ('en', gettext('English')),
+    ('ru', gettext('Russia')),
 )
 
 TIME_ZONE = 'UTC'
@@ -147,8 +148,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = (BASE_DIR / 'static',)
-STATIC_ROOT = os.path.join(BASE_DIR,'static')
+STATICFILES_DIRS = (BASE_DIR / 'static',)
+# STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -184,8 +185,9 @@ SOCIAL_AUTH_VK_OAUTH2_IGNORE_DEFAULT_SCOPE = True
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
 
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend', # бекенд классической аутентификации, чтобы работала авторизац через обычный логин и пароль
-    'social_core.backends.vk.VKOAuth2',          # бекенд авторизации через ВКонтакте
+    'django.contrib.auth.backends.ModelBackend',
+    # бекенд классической аутентификации, чтобы работала авторизац через обычный логин и пароль
+    'social_core.backends.vk.VKOAuth2',  # бекенд авторизации через ВКонтакте
 )
 
 # id = '8044921'
