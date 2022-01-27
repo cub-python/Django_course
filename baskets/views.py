@@ -42,6 +42,7 @@ def basket_add(request, id):
 #         return JsonResponse({'result': result})
 
 
+
 @login_required
 def basket_remove(request,basket_id):
     Basket.objects.get(id=basket_id).delete()

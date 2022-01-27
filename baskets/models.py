@@ -4,7 +4,6 @@ from django.db import models
 from authapp.models import User
 from mainapp.models import Product
 
-
 # class BasketQuerySet(models.QuerySet):
 #     def delete(self, *args, **kwargs):
 #         for item in self:
