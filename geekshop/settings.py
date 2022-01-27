@@ -127,14 +127,14 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru'
 
-gettext = lambda s: s
+ugettext = lambda s: s
 
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale/'),
 )
 LANGUAGES = (
-    ('en', gettext('English')),
-    ('ru', gettext('Russia')),
+    ('en', ugettext('English')),
+    ('ru', ugettext('Russia')),
 )
 
 TIME_ZONE = 'UTC'
