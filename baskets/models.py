@@ -1,8 +1,8 @@
 from django.db import models
-
 # Create your models here.
 from authapp.models import User
 from mainapp.models import Product
+
 
 # class BasketQuerySet(models.QuerySet):
 #     def delete(self, *args, **kwargs):
@@ -14,7 +14,6 @@ from mainapp.models import Product
 
 class Basket(models.Model):
     # objects = BasketQuerySet.as_manager()
-
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
