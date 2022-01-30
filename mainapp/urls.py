@@ -1,9 +1,6 @@
 from django.urls import path
 from mainapp.views import products, ProductDetail
 
-
-
-
 app_name = 'mainapp'
 urlpatterns = [
 
