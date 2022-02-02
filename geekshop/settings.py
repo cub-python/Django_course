@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'geekshop.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-#
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -106,7 +106,7 @@ DATABASES = {
     }
 }
 
-# Password validation
+Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -239,7 +239,7 @@ CACHE_MIDDLEWARE_KEY_PREFIX = 'geekbrains'
 CACHES = {
     'default':{
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '31.31.202.58:11211'
+        # 'LOCATION': '31.31.202.58:11211'
     }
 }
 
