@@ -4,6 +4,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.template.loader import render_to_string
+
 from baskets.models import Basket
 from mainapp.models import Product
 

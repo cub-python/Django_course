@@ -1,6 +1,8 @@
+from django.contrib import admin
+
 # Register your models here.
 from baskets.models import Basket
-from django.contrib import admin
+
 
 
 class BasketAdmin(admin.TabularInline):
