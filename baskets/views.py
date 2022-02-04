@@ -10,7 +10,7 @@ from mainapp.models import Product
 
 @login_required
 def basket_add(request, id):
-    user_select = request.user
+    # user_select = request.user
     product = Product.objects.get(id=id)
     baskets = Basket.objects.filter(user=user_select,product=product)
 

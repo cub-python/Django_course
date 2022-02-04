@@ -1,3 +1,4 @@
+from django.db.models import F
 from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -79,12 +80,22 @@ class CategoryDeleteView(DeleteView, BaseClassContextMixin, CustomDispatchMixin)
         return HttpResponseRedirect(self.get_success_url())
 
 
+
 class CategoryUpdateView(UpdateView, BaseClassContextMixin, CustomDispatchMixin):
     model = ProductCategory
     template_name = 'admins/admin-category-update-delete.html'
     form_class = CategoryUpdateFormAdmin
     title = 'Админка | Обновления категории'
     success_url = reverse_lazy('admins:admin_category')
+
+    def form_valid(selfself,form):
+        if 'discont' in form.cleaned_data:
+            discount = form.cleanet_data['discount']
+            if discount:
+                print(f'примееняется скидка {discount} % к товарам категории  {self.object.name}')
+                self.object.product_set.update(price=F('price')*(1-discount/100))
+                db_profile_by_type(self.__class__,'UPDATE',sonnection.queries)
+        return HttpResponseRedirect(self.get_success_url())
 
 
 class CategoryCreateView(CreateView, BaseClassContextMixin, CustomDispatchMixin):
