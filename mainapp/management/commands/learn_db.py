@@ -4,8 +4,9 @@ from django.db.models import Q,F
 
 
 class Command(BaseCommand):
-   def handle(self, *args, **options):
-       products = Product.objects.filter(
-
-           Q(category__name='Обувь') & Q(category__id=6))
-       print(products)
+    def handle(self, *args, **options):
+        products = Product.objects.filter(
+            # ~Q(category__name='Обувь'))
+            # Q(category__name='Обувь') | Q(category__name='Тест'))
+             Q(category__name='Обувь') & Q(category__id=3))
+        print(products)

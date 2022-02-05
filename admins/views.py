@@ -1,17 +1,34 @@
-from django.db.models import F
 from django.contrib.auth.decorators import user_passes_test
+from django.db import connection
+from django.db.models import F
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
-
 # Create your views here.
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView, TemplateView
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView, TemplateView
 
 from admins.forms import UserAdminRegisterForm, UserAdminProfileForm, CategoryUpdateFormAdmin, ProductsForm
 from authapp.models import User
 from mainapp.mixin import BaseClassContextMixin, CustomDispatchMixin
 from mainapp.models import Product, ProductCategory
+
+
+def db_profile_by_type(prefix, type, queries):
+    update_queries = list(filter(lambda x: type in x['sql'], queries))
+    print(f'db_profile {type} for {prefix}:')
+    [print(query['sql']) for query in update_queries]
+
+@receiver(pre_save, sender=ProductCategory)
+def product_is_active_update_productcategory_save(sender, instance, **kwargs):
+   if instance.pk:
+       if instance.is_active:
+           instance.product_set.update(is_active=True)
+       else:
+           instance.product_set.update(is_active=False)
+
+       db_profile_by_type(sender, 'UPDATE', connection.queries)
 
 
 class IndexTemplateView(TemplateView):
@@ -75,27 +92,44 @@ class CategoryDeleteView(DeleteView, BaseClassContextMixin, CustomDispatchMixin)
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
-        self.object.is_active = False if self.object.is_active else True
+        self.object.product_set.update(is_active=False)
+        self.object.is_active = False
         self.object.save()
         return HttpResponseRedirect(self.get_success_url())
 
+    @method_decorator(user_passes_test(lambda u: u.is_superuser))
+    def dispatch(self, request, *args, **kwargs):
+        return super(CategoryDeleteView, self).dispatch(request, *args, **kwargs)
 
 
 class CategoryUpdateView(UpdateView, BaseClassContextMixin, CustomDispatchMixin):
     model = ProductCategory
     template_name = 'admins/admin-category-update-delete.html'
-    form_class = CategoryUpdateFormAdmin
-    title = 'Админка | Обновления категории'
     success_url = reverse_lazy('admins:admin_category')
+    form_class = CategoryUpdateFormAdmin
 
-    def form_valid(selfself,form):
-        if 'discont' in form.cleaned_data:
+    def get_context_data(self, **kwargs):
+        context = super(CategoryUpdateView, self).get_context_data(**kwargs)
+        obj = self.get_object()
+        context['key'] = obj.id
+        context['cat'] = obj.name
+        return context
+
+    def form_valid(self, form):
+        if 'discount' in form.cleaned_data:
             discount = form.cleanet_data['discount']
             if discount:
-                print(f'примееняется скидка {discount} % к товарам категории  {self.object.name}')
-                self.object.product_set.update(price=F('price')*(1-discount/100))
-                db_profile_by_type(self.__class__,'UPDATE',sonnection.queries)
+                print(f'применяется скидка {discount} % к товарам категории  {self.object.name}')
+                self.object.product_set.update(price=F('price') * (1 - discount / 100))
+                db_profile_by_type(self.__class__, 'UPDATE', connection.queries)
         return HttpResponseRedirect(self.get_success_url())
+
+    @method_decorator(user_passes_test(lambda u: u.is_superuser))
+    def dispatch(self, request, *args, **kwargs):
+        return super(CategoryUpdateView, self).dispatch(request, *args, **kwargs)
+
+
+
 
 
 class CategoryCreateView(CreateView, BaseClassContextMixin, CustomDispatchMixin):
@@ -111,6 +145,10 @@ class ProductListView(ListView, BaseClassContextMixin, CustomDispatchMixin):
     model = Product
     template_name = 'admins/admin-product-read.html'
     title = 'Админка | Обновления категории'
+
+    @method_decorator(user_passes_test(lambda u: u.is_superuser))
+    def dispatch(self, request, *args, **kwargs):
+        return super(ProductListView, self).dispatch(request, *args, **kwargs)
 
 
 class ProductsUpdateView(UpdateView, BaseClassContextMixin, CustomDispatchMixin):
