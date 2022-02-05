@@ -1,3 +1,4 @@
+
 /	mainapp.views.index	index
 /admin/	django.contrib.admin.sites.index	admin:index
 /admin/<app_label>/	django.contrib.admin.sites.app_index	admin:app_list
@@ -71,27 +72,3 @@
 /complete/<str:backend>/	social_django.views.complete	social:complete
 /debug/render_panel/	debug_toolbar.views.render_panel	djdt:render_panel
 /debug/sql_explain/	debug_toolbar.panels.sql.views.sql_explain	djdt:sql_explain
-/debug/sql_profile/	debug_toolbar.panels.sql.views.sql_profile	djdt:sql_profile
-/debug/sql_select/	debug_toolbar.panels.sql.views.sql_select	djdt:sql_select
-/debug/template_source/	debug_toolbar.panels.templates.views.template_source	djdt:template_source
-/disconnect/<str:backend>/	social_django.views.disconnect	social:disconnect
-/disconnect/<str:backend>/<int:association_id>/	social_django.views.disconnect	social:disconnect_individual
-/i18n/setlang/	django.views.i18n.set_language	set_language
-/login/<str:backend>/	social_django.views.auth	social:begin
-/media/<path>	django.views.static.serve
-/orders/	ordersapp.views.OrderList	orders:list
-/orders/create/	ordersapp.views.OrderCreate	orders:create
-/orders/create/<int:pk>/	ordersapp.views.OrderUpdate	orders:update
-/orders/delete/<int:pk>/	ordersapp.views.OrderDelete	orders:delete
-/orders/forming_complete/<int:pk>/	ordersapp.views.order_forming_complete	orders:forming_complete
-/orders/product/<int:pk>/price/	ordersapp.views.get_product_price	orders:product_price
-/orders/read/<int:pk>/	ordersapp.views.OrderDetail	orders:read
-/products/	mainapp.views.products	mainapp:products
-/products/category/<int:id_category>	mainapp.views.products	mainapp:category
-/products/detail/,<int:pk>/	mainapp.views.ProductDetail	mainapp:detail
-/products/page/<int:page>	mainapp.views.products	mainapp:page
-/users/login/	authapp.views.LoginListView	authapp:login
-/users/logout/	authapp.views.Logout	authapp:logout
-/users/profile/	authapp.views.ProfileFormView	authapp:profile
-/users/register/	authapp.views.RegisterListView	authapp:register
-/users/verify/<str:email>/<str:activate_key>/	authapp.views.verify	authapp:verify
