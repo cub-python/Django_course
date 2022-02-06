@@ -9,7 +9,6 @@ import os
 
 from django.views.decorators.cache import cache_page, never_cache
 from django.views.generic import DetailView
-
 from mainapp.models import Product, ProductCategory
 
 MODULE_DIR = os.path.dirname(__file__)
