@@ -59,6 +59,7 @@
       "category": 2
     }
   },
+
   {
     "model": "mainapp.product",
     "pk": 8,
