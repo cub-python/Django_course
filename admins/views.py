@@ -129,9 +129,6 @@ class CategoryUpdateView(UpdateView, BaseClassContextMixin, CustomDispatchMixin)
         return super(CategoryUpdateView, self).dispatch(request, *args, **kwargs)
 
 
-
-
-
 class CategoryCreateView(CreateView, BaseClassContextMixin, CustomDispatchMixin):
     model = ProductCategory
     template_name = 'admins/admin-category-create.html'

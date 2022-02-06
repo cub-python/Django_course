@@ -51,7 +51,6 @@ class CategoryUpdateFormAdmin(forms.ModelForm):
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control py-4'
 
-
 class ProductsForm(forms.ModelForm):
     category = forms.ModelChoiceField(queryset=ProductCategory.objects.all())
     image = forms.ImageField(widget=forms.FileInput)
