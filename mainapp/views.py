@@ -26,18 +26,18 @@ def get_link_category():
         return ProductCategory.objects.all()
 # Create your views here.
 
-#
-# def get_link_product():
-#     if settings.LOW_CACHE:
-#         key = 'link_product'
-#         link_product = cache.get(key)
-#         if link_product is None:
-#             link_product = Product.objects.all().select_related('category')
-#             cache.set(key,link_product)
-#         return link_product
-#     else:
-#         return Product.objects.all().select_related('category')
-#
+
+def get_link_product():
+    if settings.LOW_CACHE:
+        key = 'link_product'
+        link_product = cache.get(key)
+        if link_product is None:
+            link_product = Product.objects.all().select_related('category')
+            cache.set(key,link_product)
+        return link_product
+    else:
+        return Product.objects.all().select_related('category')
+
 #
 # def get_product(pk):
 #     if settings.LOW_CACHE:
@@ -88,19 +88,19 @@ def products(request,id_category=None,page=1):
 
 
 class ProductDetail(DetailView):
-    """
-    Контроллер вывода информации о продукте
-    """
+    # """
+    # Контроллер вывода информации о продукте
+    # """
     model = Product
     template_name = 'mainapp/detail.html'
 
-    def get_context_data(self, category_id=None, *args, **kwargs):
-        context = super(ProductDetail, self).get_context_data(**kwargs)
-        product = self.get_object()
-        context['product'] = product
-        return context
-
-    # def get_context_data(self, **kwargs):
+    # def get_context_data(self, category_id=None, *args, **kwargs):
     #     context = super(ProductDetail, self).get_context_data(**kwargs)
-    #     context['product'] = get_product(self.kwargs.get("pk"))
+    #     product = self.get_object()
+    #     context['product'] = product
     #     return context
+
+    def get_context_data(self, **kwargs):
+        context = super(ProductDetail, self).get_context_data(**kwargs)
+        context['product'] = get_product(self.kwargs.get("pk"))
+        return context
