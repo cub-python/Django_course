@@ -102,7 +102,7 @@ class CategoryDeleteView(DeleteView, BaseClassContextMixin, CustomDispatchMixin)
         return super(CategoryDeleteView, self).dispatch(request, *args, **kwargs)
 
 
-class CategoryUpdateView(UpdateView, BaseClassContextMixin, CustomDispatchMixin):
+class CategoryUpdateView(UpdateView):
     model = ProductCategory
     template_name = 'admins/admin-category-update-delete.html'
     success_url = reverse_lazy('admins:admin_category')
@@ -117,16 +117,16 @@ class CategoryUpdateView(UpdateView, BaseClassContextMixin, CustomDispatchMixin)
 
     def form_valid(self, form):
         if 'discount' in form.cleaned_data:
-            discount = form.cleanet_data['discount']
+            discount = form.cleaned_data['discount']
             if discount:
                 print(f'применяется скидка {discount} % к товарам категории  {self.object.name}')
                 self.object.product_set.update(price=F('price') * (1 - discount / 100))
                 db_profile_by_type(self.__class__, 'UPDATE', connection.queries)
         return HttpResponseRedirect(self.get_success_url())
 
-    @method_decorator(user_passes_test(lambda u: u.is_superuser))
-    def dispatch(self, request, *args, **kwargs):
-        return super(CategoryUpdateView, self).dispatch(request, *args, **kwargs)
+    # @method_decorator(user_passes_test(lambda u: u.is_superuser))
+    # def dispatch(self, request, *args, **kwargs):
+    #     return super(CategoryUpdateView, self).dispatch(request, *args, **kwargs)
 
 
 class CategoryCreateView(CreateView, BaseClassContextMixin, CustomDispatchMixin):
