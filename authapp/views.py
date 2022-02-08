@@ -4,7 +4,6 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
-
 # Create your views here.
 from django.urls import reverse, reverse_lazy
 from django.views.generic import FormView, UpdateView
@@ -18,6 +17,11 @@ class LoginListView(LoginView, BaseClassContextMixin):
     template_name = 'authapp/login.html'
     form_class = UserLoginForm
     title = 'GeekShop - Авторизация'
+    #
+    # def get(self, request, *args, **kwargs):
+    #     if request.user.is_authenticated:
+    #         return HttpResponseRedirect(reverse('index'))
+    #     return HttpResponseRedirect(reverse('authapp:login'))
 
 
 class RegisterListView(FormView, BaseClassContextMixin):
