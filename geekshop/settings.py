@@ -81,6 +81,7 @@ TEMPLATES = [
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
 
+
             ],
         },
     },
@@ -151,8 +152,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (BASE_DIR / 'static',)
-# STATIC_ROOT =(os.path.join(BASE_DIR / 'static',))
+# STATICFILES_DIRS = (BASE_DIR / 'static',)
+STATIC_ROOT =(os.path.join(BASE_DIR / 'static',))
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -181,18 +182,19 @@ LOGIN_ERROR_URL = '/'
 # python -m smtpd -n -c DebuggingServer localhost:25
 
 # Здесь дана настройка секретных ключей для ВКонтакте
-SOCIAL_AUTH_VK_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_VK_OAUTH2_KEY')
-SOCIAL_AUTH_VK_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_VK_OAUTH2_SECRET')
+
+SOCIAL_AUTH_VK_OAUTH2_KEY = '8073815'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'NqI2kfc6TBWlcZaTgKt4'
 SOCIAL_AUTH_VK_OAUTH2_API_VERSION = '5.131'
 SOCIAL_AUTH_VK_OAUTH2_IGNORE_DEFAULT_SCOPE = True
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'social_core.backends.vk.VKOAuth2',  # бекенд авторизации через ВКонтакте
+    'social_core.backends.vk.VKOAuth2',
 )
 
-# id = '8044921'
+# id = '8073815'
 # ke = wmgsWPqHz9rXb7BtkjNn
 
 SOCIAL_AUTH_PIPELINE = (
