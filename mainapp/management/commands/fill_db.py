@@ -26,8 +26,8 @@ class Command(BaseCommand):
         Product.objects.all().delete()
         for product in products:
             prod = product.get('fields')
-            category = product.get('categry')
+            category = prod.get('category')
             _category = ProductCategory.objects.get(id=category)
             prod['category'] = _category
-            neq_category = Producr(**prod)
+            new_category = Product(**prod)
             new_category.save()

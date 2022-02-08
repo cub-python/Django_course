@@ -19,6 +19,7 @@ from ordersapp.models import Order, OrderItem
 class OrderList(ListView, BaseClassContextMixin):
     model = Order
     title = 'GeekShop | Список заказов'
+    template_name = 'opdersapp/order_list.html'
 
     def get_queryset(self):
         return Order.objects.filter(user=self.request.user, is_active=True)
