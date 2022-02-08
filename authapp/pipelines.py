@@ -1,6 +1,6 @@
 from collections import OrderedDict
 from datetime import datetime
-from urllib.parse import urlunparse, urlencode
+from urllib.parse import urlencode, urlunparse
 
 import requests
 from django.utils import timezone
@@ -13,7 +13,7 @@ def save_user_profile(backend, user, response, *args, **kwargs):
     if backend.name != 'vk-oauth2':
         return
 
-    api_url = urlunparse(('http', 'api.vk.com', 'method/users.get', None,
+    api_url = urlunparse(('https', 'api.vk.com', 'method/users.get', None,
                           urlencode(OrderedDict(fields=','.join(('bdate', 'sex', 'about', 'photo_200', 'personal')),
                                                 access_token=response['access_token'], v=5.131)), None))
 
