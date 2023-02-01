@@ -1,6 +1,6 @@
 from collections import OrderedDict
 from datetime import datetime
-from urllib.parse import urlunparse, urlencode
+from urllib.parse import urlencode, urlunparse
 
 import requests
 from django.utils import timezone
